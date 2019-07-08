@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<div class="container a"> 
+  <form #login="ngForm" (ngSubmit)="Onsubmit(login)">
+    <h2>log in</h2>
+    <label for="Email">Email </label> <br>
+    <input type="email" name="email" [pattern]="emailPattern" class="form-control" placeholder="enter email"  #Email ngModel required/>
+    <label>password</label><br>
+    <input placeholder="password" type="password" class="form-control" name="pwd" #pwd ngModel required/> <br> <br>
+    <button [disabled]= "!login.valid" >login</button><br><br>
+    <span>or sign up?</span>
+  </form>
+</div>
+<div class="container b"> 
+    <form #login="ngForm" (ngSubmit)="Onsubmit(login)">
+      <h2>sign up</h2>
+      <label for="Email">Email </label> <br>
+      <input type="email" name="email" [pattern]="emailPattern" class="form-control" placeholder="enter email"  #Email ngModel required/>
+      <label>password</label><br>
+      <input placeholder="password" type="password" class="form-control" name="pwd" #pwd ngModel required/> <br> <br>
+      <button [disabled]= "!login.valid" >sign up</button><br><br>
+      <span>or log in?</span>
+    </form>
+  </div>

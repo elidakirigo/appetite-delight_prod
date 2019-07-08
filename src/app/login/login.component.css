@@ -1,0 +1,50 @@
+.a {
+    display: none;
+}
+
+
+
+form {
+    position: absolute;
+    left: 40em;
+    top: 15em;
+    width: 25%;
+    text-align: center;
+    background: green;
+    padding: 3em;
+    border-radius: 3px;
+    box-shadow: 2px 5px 8px #000000;
+}
+h2 {
+    background: blueviolet;
+    padding: .7em;
+    border-radius: 3px;
+    font: bold 15px cursive;
+}
+button {
+    width: 100%;
+    padding: .9em;
+    border-radius: 2px;
+    border: 2px solid black;
+    background: orangered;
+    font: 800 14px cursive;
+    cursor: pointer;
+}
+button:hover {
+    border: 2px solid orangered;
+    background: white;
+}
+label {
+    color: aliceblue;
+    padding: 6px;
+
+}
+span {
+    color: white;
+    padding: 6px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+span:hover {
+    color: orangered;
+}
