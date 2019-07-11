@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 
-<div class="container">
+<div class="container" >
     <div class="row">
         <div class="col-md-3">
             <div class="well">
@@ -27,37 +27,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
-            <div class="thumbnail">
-            <img src="/assets/food12.jpg" width="100%" alt="...">
+        <div class="col-md-9" >
+            <div class="thumbnail"*ngFor="let product of products">
+            <img [src]="product.img" width="100%" alt="">
             <div class="caption">
-                <h5>salad vegis</h5>
-                <h5>40.00 ksh</h5>
-                <button>add to cart</button>
-                </div>
-            </div>
-            <div class="thumbnail">
-                <img src="/assets/food7.jpg" width="100%" alt="...">
-                <div class="caption">
-                    <h5>freshly harvested tomatoes</h5>
-                    <h5>150.00 ksh</h5>
-                    <button>add to cart</button>
-                </div>
-            </div>
-            <div class="thumbnail">
-                <img src="/assets/food6.jpg" width="100%" alt="...">
-                <div class="caption">
-                    <h5>raw meat</h5>
-                    <h5>90.00 ksh</h5>
-                    <button>add to cart</button>
-                </div>
-            </div>
-            <div class="thumbnail">
-                <img src="/assets/food14.jpg" width="100%" alt="...">
-                <div class="caption">
-                    <h5>marinade meat</h5>
-                    <h5>30.00 ksh</h5>
-                    <button>add to cart</button>
+                    <h5>{{ product.name}}</h5>
+                    <h5>{{ product.cost}}.00 ksh.</h5>
+                <button (click)="onSelect(product)">add to cart</button>
                 </div>
             </div>
         </div>

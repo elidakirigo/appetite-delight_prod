@@ -1,26 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Products, products } from '../data';
 
-@Component({
-  selector: 'app-shop',
-  templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.css']
-})
+@Component({ selector: 'app-shop', templateUrl: './shop.component.html', styleUrls: ['./shop.component.css'] })
+
+
 export class ShopComponent implements OnInit {
   
-  image:string;
-  img : string ;
-  cost:number;
-  name:string;
- 
-  constructor() { 
+  products = Products;
+
+  selectedProduct: products;
+
+  
+  constructor() {}
+  onSelect(product: products): void {
+    this.selectedProduct = product;
+    console.log(product);
     
-
-    // this.image  = document.querySelector(img);
-    // this.cost  = document.querySelector(h5);
-    // this.name  = document.querySelector(h5);
-
   }
-
   ngOnInit() {
   }
 

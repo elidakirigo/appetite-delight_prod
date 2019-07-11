@@ -11,17 +11,17 @@
         </div>
       </div>
     </div>
-    <div class="panel-body" *ngFor = "let item of Items">
+    <div class="panel-body" *ngIf="selectedProduct">
         <div class="container">
-            <div class="row">
+            <div class="row" >
                 <div class="col-md-1 s"><h5 class="x">remove</h5></div>
-              <div class="col-md-2 s"><img [src]="item.image" width="20px" height="20px"/></div>
-              <div class="col-md-3 s">{{ name }}</div>
-              <div class="col-md-3 s">{{ undefined }}</div>
-              <div class="col-md-3 cost">{{ cost }}</div>
+              <div class="col-md-2 s"><img [src]="selectedProduct.image" width="30px" height="30px"/></div>
+              <div class="col-md-3 s">{{ selectedProduct.name }}</div>
+              <div class="col-md-3 s">{{ selectedProduct.type }}</div>
+              <div class="col-md-3 cost">{{ selectedProduct.cost }} kshs.</div>
             </div>
           </div>
     </div>
-    <div class="panel-footer">Total : {{ totalCost }}</div>
+    <div class="panel-footer" *ngIf="selectedProduct">Total : {{ selectedProduct.totalCost }} kshs.</div>
   </div>
 </div>

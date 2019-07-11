@@ -1,8 +1,9 @@
-.a {
-    display: none;
+.x {
+    display: none  !important;
 }
-
-
+.container {
+    display: block;
+}
 
 form {
     position: absolute;
@@ -26,7 +27,6 @@ button {
     padding: .9em;
     border-radius: 2px;
     border: 2px solid black;
-    background: orangered;
     font: 800 14px cursive;
     cursor: pointer;
 }
@@ -44,7 +44,4 @@ span {
     padding: 6px;
     text-decoration: underline;
     cursor: pointer;
-}
-span:hover {
-    color: orangered;
 }
