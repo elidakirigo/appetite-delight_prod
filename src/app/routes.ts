@@ -13,6 +13,7 @@ export const appRoutes : Routes = [
     { path: 'cart', component: CartComponent ,
     canActivate:[AuthGuard]
 },
+    // { path: '**', component: LoginComponent },
     { path: 'logout', component: LogoutComponent },
     { path: 'shop', component: ShopComponent },
     { path: 'login', component: LoginComponent }

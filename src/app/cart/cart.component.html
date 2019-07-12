@@ -1,27 +1,28 @@
 <app-navbar></app-navbar>
-<div class="container" style="margin-top:5em;">
+<div class="container" style="margin-top:5em;" *ngIf="(authService.user | async)">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div class="container">
+      <div class="container" >
         <div class="row">
-          <div class="col-md-3 s">add to cart</div>
-          <div class="col-md-3 s">name</div>
-          <div class="col-md-3 s">type</div>
-          <div class="col-md-3 " >cost</div>
+          <div class="col-md-3 col-xs-3 col-sm-3 s">add to cart</div>
+          <div class="col-md-3 col-xs-3 col-sm-3 s">name</div>
+          <div class="col-md-3 col-xs-3 col-sm-3 s">type</div>
+          <div class="col-md-3 col-xs-3 col-sm-3" >cost</div>
         </div>
       </div>
     </div>
-    <div class="panel-body" *ngIf="selectedProduct">
+    <div class="panel-body" *ngFor="let product of items">
         <div class="container">
             <div class="row" >
-                <div class="col-md-1 s"><h5 class="x">remove</h5></div>
-              <div class="col-md-2 s"><img [src]="selectedProduct.image" width="30px" height="30px"/></div>
-              <div class="col-md-3 s">{{ selectedProduct.name }}</div>
-              <div class="col-md-3 s">{{ selectedProduct.type }}</div>
-              <div class="col-md-3 cost">{{ selectedProduct.cost }} kshs.</div>
+                <div class="col-md-1 col-xs-1 col-sm-1 s"><h5 class="x">remove</h5></div>
+              <div class="col-md-2 col-xs-2 col-sm-2 s"><img [src]="product.img" width="40px" height="30px"/></div>
+              <div class="col-md-3 col-xs-3 col-sm-3 s">{{ product.name }}</div>
+              <div class="col-md-3 col-xs-3 col-sm-3 s">{{ product.description }}</div>
+              <div class="col-md-3 col-xs-3 col-sm-3 cost">{{ product.cost }} kshs.</div>
             </div>
           </div>
     </div>
-    <div class="panel-footer" *ngIf="selectedProduct">Total : {{ selectedProduct.totalCost }} kshs.</div>
+    <div class="panel-footer" *ngIf="selectedProduct">Total : {{ product.totalCost }} kshs.</div>
   </div>
 </div>
+

@@ -7,12 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  img = document.querySelector("img");
-  name = document.querySelector("h3");
-  cost = "$50";
-
-
-
   constructor() {
    }
 

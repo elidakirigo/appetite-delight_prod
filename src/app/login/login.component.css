@@ -9,7 +9,7 @@ form {
     position: absolute;
     left: 40em;
     top: 15em;
-    width: 25%;
+    width: 27%;
     text-align: center;
     background: green;
     padding: 3em;
@@ -44,4 +44,45 @@ span {
     padding: 6px;
     text-decoration: underline;
     cursor: pointer;
+}
+@media (max-width: 1200px)
+{
+    form {
+        position: absolute;
+        left: 15em;
+        top: 15em;
+        width: 35%;
+        text-align: center;
+        background: green;
+        padding: 3em;
+        border-radius: 3px;
+        box-shadow: 2px 5px 8px #000000;
+    }
+}
+@media (max-width: 800px)
+{
+    form {
+        position: absolute;
+        left: 10em;
+        top: 15em;
+        width: 50%;
+        text-align: center;
+        background: green;
+        padding: 3em;
+        border-radius: 3px;
+        box-shadow: 2px 5px 8px #000000;
+    }
+}
+@media (max-width: 400px)
+{
+    form {
+        position: absolute;
+        top: 15em;
+        width: 100%;
+        text-align: center;
+        background: green;
+        padding: 1em;
+        border-radius: 3px;
+        box-shadow: 2px 5px 8px #000000;
+    }
 }

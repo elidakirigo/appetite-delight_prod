@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
@@ -14,7 +15,6 @@ import { ShopComponent } from './shop/shop.component';
 import { CartComponent } from './cart/cart.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
-import { from } from 'rxjs';
 import { AuthGuard } from './auth.guard';
 import { LogoutComponent } from './logout/logout.component';
 
@@ -32,10 +32,16 @@ import { LogoutComponent } from './logout/logout.component';
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireDatabaseModule
+    AngularFireDatabaseModule
   ],
-  providers: [, AuthGuard],
+  providers: [
+    AuthGuard,
+    AngularFireModule,
+    AngularFireAuthModule,
+    AngularFireAuth
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

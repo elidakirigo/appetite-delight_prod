@@ -1,44 +1,65 @@
 import { Injectable } from '@angular/core';
-import { Router } from  "@angular/router";
-import { AngularFireAuth } from  "@angular/fire/auth";
-import { User } from  'firebase';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
+import * as firebase from 'firebase/app';
+import { Router } from '@angular/router';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  user: Observable<firebase.User>;
+  selectedClass: string;
+  public message = {text: ''};
+  public suceed = {text: ''};
+  public muserid: string;
 
-  user:User;
-  constructor(public  afAuth:  AngularFireAuth, public  router:  Router) 
-  {
-    this.afAuth.authState.subscribe(user => {
-      if (user){
-        this.user = user;
-        localStorage.setItem('user', JSON.stringify(this.user));
-      } else {
-        localStorage.setItem('user', null);
-      }
-    })
-   }
 
-   async login(email: string, password: string) { console.log("working");
-   
-    var result = await this.afAuth.auth.signInWithEmailAndPassword(email, password)
-    this.router.navigate(['/cart']);
-}
-    // async register(email: string, password: string) {
-    //   var result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-    //   this.sendEmailVerification();
-    // }
-    // async logout(){
-    //   await this.afAuth.auth.signOut();
-    //   localStorage.removeItem('user');
-    //   this.router.navigate(['/home']);
-    // }
-    // get isLoggedIn(): boolean {
-    //   const  user  =  JSON.parse(localStorage.getItem('user'));
-    //   return  user  !==  null;
-    // }
+  constructor(private firebaseAuth: AngularFireAuth, public route: Router) { this.user = firebaseAuth.authState; }
+
+  public signup(email: string, password: string) {
+    this.message = { text : 'validating...'};
+    this.firebaseAuth
+      .auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(value => {
+        this.message = { text : ''};
+        this.suceed = { text : 'authenticated.'};
+        this.route.navigate(['/shop']);
+        console.log('Success!', value);
+      })
+      .catch(err => {
+        this.message = { text : 'the server is experiencing some technical errors,please check on your connectivity'};
+        console.log('Something went wrong:', err.message);
+        this.route.navigate(['/login']);
+      });
+  }
+
+  public login(email: string, password: string) {
+    this.message = { text : 'validating...'};
+    this.firebaseAuth
+      .auth
+      .signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        if (user) {
+          console.log(user);
+          this.suceed = { text : 'authenticated.'};
+          this.route.navigate(['/shop']); }
+      })
+
+      .catch(err => {
+        this.message = { text : 'Invalid Email/Password.PLease try again'};
+        this.route.navigate(['/login']);
+      });
+  }
+
+  public logout() {
+    this.firebaseAuth
+      .auth
+      .signOut();
+    this.route.navigate(['/home']);
+  }
+
 }
 

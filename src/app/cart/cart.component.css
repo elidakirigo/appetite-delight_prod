@@ -10,6 +10,7 @@
 .panel-body {
     font: 700 15px cursive;
     text-align: center;
+    border-bottom: 2px solid #80808057;
 }
 .cost {
     text-decoration: underline;
