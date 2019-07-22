@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   public password: string;
 
   public message = {text: ''};
-  public suceed = {text: ''};
 
   constructor(public route: Router,
               public authService: AuthService, private af: AngularFireAuth,
@@ -36,12 +35,10 @@ export class LoginComponent implements OnInit {
   signup( email: string, password: string) {
     this.authService.signup(email, password);
     this.message = this.authService.message;
-    this.suceed = this.authService.suceed;
     this.email = this.password = '';
   }
   logedin(email: string, password: string) {
     this.authService.login(email, password);
-    this.suceed = this.authService.suceed;
     this.message = this.authService.message;
     const payLoad = {
       email: this.email,
