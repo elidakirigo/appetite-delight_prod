@@ -3,7 +3,6 @@
     <div class="container">
         <div class="alert alert-success" *ngIf="message.text !== ''">
             <h3>{{ message.text }}</h3>
-            <h3>{{ suceed.text }}</h3>
         </div>
         <form *ngIf="!(authService.user | async)" #login="ngForm">
             <h2 style="background: plum;">log in</h2>
@@ -19,7 +18,6 @@
     <div class="container x">
         <div class="alert alert-success" *ngIf="message.text !== ''">
             <h3>{{ message.text }}</h3>
-            <h3>{{ suceed.text }}</h3>
         </div>
         <form #login="ngForm" *ngIf="!(authService.user | async)">
             <h2 style="background: yellow;">sign up</h2>

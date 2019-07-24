@@ -3,7 +3,6 @@ import { ShopService } from '../utils/shop.service';
 import { products } from '../data';
 import { Router } from '@angular/router';
 import { CartService } from '../utils/cart.service';
-import { of } from 'rxjs';
 import { AuthService } from '../utils/auth.service';
 
 @Component({ selector: 'app-shop', templateUrl: './shop.component.html', styleUrls: ['./shop.component.css'] })
@@ -12,6 +11,7 @@ import { AuthService } from '../utils/auth.service';
 export class ShopComponent implements OnInit {
 
     products: products[];
+    user = null;
 
   constructor(private authService: AuthService ,
               private shopService: ShopService ,
@@ -19,19 +19,23 @@ export class ShopComponent implements OnInit {
               private cartService: CartService) {}
 
 
-  onSelect(product: products ) {
-    this.cartService.addCart(product);
-    this.router.navigate(['/login']);
-    console.log(product);
+  onSelect(product: products ): void {
+    this.user = this.authService.newUser;
+    console.log( this.user);
 
-  //  this.router.navigate(["/cart"])
+    if (this.user != null) {
+      console.log(product);
+      this.cartService.addCart(product);
 
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
-
 
   getProducts(): void {
     this.products = this.shopService.getProducts();
   }
+
   ngOnInit() {
     this.getProducts();
   }

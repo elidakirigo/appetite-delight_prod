@@ -17,9 +17,13 @@ export class CartService {
     this.database = firebase.database();
     this.database.ref().push().set(item);
 
-    this.database.ref().child().on('value', function(returnProduct: any) {
+    this.database.ref().child('user').on('child_added', function(returnProduct: any) {
       this.newProduct = returnProduct.val();
     });
   }
-
+  remove() {
+    this.database.ref().child('user').on('child_remove', function(returnProduct: any) {
+      this.newProduct = returnProduct.val();
+    });
+  }
 }

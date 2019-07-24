@@ -37,7 +37,7 @@ export class AuthService {
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
-        this.newUser = 'vc';
+        this.newUser = 'user';
         this.message = { text : ''};
         this.route.navigate(['/shop']);
         console.log('Success!', value);
@@ -55,7 +55,7 @@ export class AuthService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
-        this.newUser = user;
+        this.newUser = 'user';
         if (user) {
           this.route.navigate(['/shop']); }
       })
@@ -70,6 +70,7 @@ export class AuthService {
     this.firebaseAuth
       .auth
       .signOut();
+    this.newUser = null;
     this.route.navigate(['/home']);
   }
 
